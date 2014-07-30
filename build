@@ -1,5 +1,5 @@
 #!/bin/bash
-# Execute `mat.make` which will clone Drupal core among with our
+# Execute `platform.make` which will clone Drupal core among with our
 # installation profile placing it into the appropriate folder (`profiles`).
 if [ -d web ]; then
 mv web web-old
@@ -9,7 +9,7 @@ if [ "$DRUSH" == "" ]; then
 DRUSH="drush"
 fi
 
-$DRUSH make --working-copy --no-gitinfofile mat.make web
+$DRUSH make --working-copy --no-gitinfofile platform.make web
 
 if [ -d web-old ]; then
     # Sites all should be populated by our make file, so lets' remove that.
