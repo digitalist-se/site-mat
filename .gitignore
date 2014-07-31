@@ -10,8 +10,4 @@ web/*.*
 web/*/*
 !web/sites/*/files/README.txt
 !web/sites/*/settings.php
-<<<<<<< HEAD
 .vagrant
-=======
-.vagrant
->>>>>>> a0f48f0053a4edbc607b8a9be5c11ead72a128fb
