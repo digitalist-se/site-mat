@@ -23,7 +23,7 @@ Vagrant.configure("2")  do |config|
     config.vm.provision :puppet do |puppet|
        # Cheat a bit to get our usual webroot
        puppet.facter = {
-        'drupal_root' => '/srv/www/wunderkraut-mat/web'
+        'drupal_root' => '/srv/www/site-mat/web'
        }
        puppet.manifests_path = "./"
        puppet.manifest_file = "manifests/site.pp"
@@ -35,9 +35,6 @@ Vagrant.configure("2")  do |config|
         shell.inline = "drush dl drush-7.x-5.9 -y"
      end
     # The path to the platform
-    config.vm.synced_folder "./", "/srv/www/wunderkraut-mat", :nfs => true
-    # Only if you are doing migration: Path to episerver files
-    # config.vm.synced_folder "/Users/colin/Desktop/market/", "/mnt/market", :nfs => true
-
+    config.vm.synced_folder "./", "/srv/www/site-mat", :nfs => true
 
 end
