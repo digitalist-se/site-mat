@@ -10,11 +10,11 @@ Vagrant.configure("2")  do |config|
 
     # Assign this VM to a host only network IP, allowing you to access it
     # via the IP.
-    config.vm.network :private_network, ip: "192.168.50.70"
-    config.vm.hostname = "mat.dev"
+    config.vm.network :private_network, ip: "192.168.50.32"
+    config.vm.hostname = "mat.lollen"
 
     config.vm.provider "virtualbox" do |v|
-        v.name = "Mat.se"
+        v.name = "MatBuild.se"
         v.customize ["modifyvm", :id, "--memory", "2048"]
         v.customize ["modifyvm", :id, "--cpus", "1"]
     end
@@ -23,7 +23,7 @@ Vagrant.configure("2")  do |config|
     config.vm.provision :puppet do |puppet|
        # Cheat a bit to get our usual webroot
        puppet.facter = {
-        'drupal_root' => '/srv/www/wunderkraut-mat/web'
+        'drupal_root' => '/srv/www/mat-testing/web'
        }
        puppet.manifests_path = "./"
        puppet.manifest_file = "manifests/site.pp"
@@ -35,7 +35,7 @@ Vagrant.configure("2")  do |config|
         shell.inline = "drush dl drush-7.x-5.9 -y"
      end
     # The path to the platform
-    config.vm.synced_folder "./", "/srv/www/wunderkraut-mat", :nfs => true
+    config.vm.synced_folder "./", "/srv/www/mat-testing", :nfs => true
     # Only if you are doing migration: Path to episerver files
     # config.vm.synced_folder "/Users/colin/Desktop/market/", "/mnt/market", :nfs => true
 
